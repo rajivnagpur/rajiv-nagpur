@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rajiv Niranjan Nagpur — Senior Technical Solutions Specialist</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0d0d0d;
+    --paper: #f5f0e8;
+    --cream: #ece6d8;
+    --rust: #b84a1e;
+    --gold: #c89b3c;
+    --slate: #3a4a5c;
+    --muted: #7a7060;
+    --line: rgba(13,13,13,0.12);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ---- NOISE TEXTURE OVERLAY ---- */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.6;
+  }
+
+  /* ---- NAV ---- */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 4rem;
+    background: rgba(245,240,232,0.88);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: 1.1rem;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .nav-logo span { color: var(--rust); }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--rust); }
+
+  /* ---- HERO ---- */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-left {
+    background: var(--ink);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 8rem 4rem 5rem;
+    position: relative;
+  }
+
+  .hero-left::after {
+    content: '';
+    position: absolute;
+    top: 0; right: -1px;
+    width: 60px;
+    height: 100%;
+    background: var(--paper);
+    clip-path: polygon(100% 0, 100% 100%, 0 100%);
+  }
+
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.2s forwards;
+  }
+
+  .hero-name {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: clamp(2.8rem, 5vw, 4.5rem);
+    line-height: 1.05;
+    color: var(--paper);
+    margin-bottom: 0.4rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.4s forwards;
+  }
+
+  .hero-name em {
+    color: var(--rust);
+    font-style: normal;
+  }
+
+  .hero-title {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    font-size: 1rem;
+    color: rgba(245,240,232,0.55);
+    margin-bottom: 2.5rem;
+    letter-spacing: 0.04em;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.6s forwards;
+  }
+
+  .hero-contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.8s forwards;
+  }
+
+  .hero-contacts a {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.78rem;
+    color: rgba(245,240,232,0.6);
+    text-decoration: none;
+    transition: color 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .hero-contacts a:hover { color: var(--gold); }
+
+  .hero-contacts a::before {
+    content: '→';
+    color: var(--rust);
+    font-size: 0.9rem;
+  }
+
+  .hero-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 8rem 5rem 5rem 7rem;
+    position: relative;
+  }
+
+  .hero-photo-wrap {
+    position: absolute;
+    top: 5rem;
+    right: 4rem;
+    z-index: 2;
+  }
+
+  .hero-photo {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center top;
+    border: 4px solid var(--paper);
+    box-shadow: 0 8px 32px rgba(13,13,13,0.25), 0 0 0 1px var(--gold);
+    display: block;
+  }
+
+  .hero-years {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(6rem, 12vw, 10rem);
+    font-weight: 900;
+    line-height: 1;
+    color: var(--cream);
+    position: absolute;
+    top: 5rem;
+    right: 3rem;
+    z-index: 0;
+    user-select: none;
+  }
+
+  .hero-summary {
+    position: relative;
+    z-index: 1;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--slate);
+    max-width: 480px;
+    opacity: 0;
+    animation: fadeUp 0.8s 1s forwards;
+  }
+
+  .hero-summary p { margin-bottom: 1.2rem; }
+
+  .hero-summary strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  /* ---- SECTION WRAPPER ---- */
+  .section {
+    padding: 7rem 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1.5rem;
+    margin-bottom: 4rem;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 1.5rem;
+  }
+
+  .section-number {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    color: var(--rust);
+    text-transform: uppercase;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  /* ---- EXPERTISE GRID ---- */
+  .expertise-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+
+  .expertise-item {
+    background: var(--paper);
+    padding: 1.5rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8rem;
+    transition: background 0.2s;
+  }
+
+  .expertise-item:hover { background: var(--cream); }
+
+  .expertise-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--rust);
+    margin-top: 0.55rem;
+    flex-shrink: 0;
+  }
+
+  .expertise-text {
+    font-size: 0.88rem;
+    color: var(--slate);
+    line-height: 1.5;
+  }
+
+  /* ---- EXPERIENCE ---- */
+  .experience-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .exp-item {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 3rem;
+    padding: 3rem 0;
+    border-bottom: 1px solid var(--line);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s, transform 0.6s;
+  }
+
+  .exp-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .exp-meta {
+    padding-top: 0.3rem;
+  }
+
+  .exp-company {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 0.3rem;
+  }
+
+  .exp-period {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    color: var(--rust);
+    margin-bottom: 0.5rem;
+  }
+
+  .exp-type {
+    font-size: 0.75rem;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  .exp-content {}
+
+  .exp-role {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 1.2rem;
+  }
+
+  .exp-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .exp-bullets li {
+    font-size: 0.9rem;
+    color: var(--slate);
+    padding-left: 1.2rem;
+    position: relative;
+    line-height: 1.6;
+  }
+
+  .exp-bullets li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-size: 0.8rem;
+  }
+
+  /* ---- SKILLS GRID ---- */
+  .skills-outer {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+  }
+
+  .skill-group {
+    padding: 2rem;
+    border: 1px solid var(--line);
+    position: relative;
+  }
+
+  .skill-group::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--rust);
+  }
+
+  .skill-group-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 1.2rem;
+  }
+
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .skill-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    padding: 0.3rem 0.8rem;
+    background: var(--cream);
+    color: var(--slate);
+    border: 1px solid var(--line);
+    letter-spacing: 0.04em;
+    transition: all 0.2s;
+  }
+
+  .skill-tag:hover {
+    background: var(--ink);
+    color: var(--paper);
+    border-color: var(--ink);
+  }
+
+  /* ---- EDUCATION ---- */
+  .edu-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .edu-card {
+    padding: 2rem;
+    background: var(--ink);
+    color: var(--paper);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .edu-card::after {
+    content: attr(data-abbr);
+    position: absolute;
+    bottom: -1rem;
+    right: -0.5rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 5rem;
+    font-weight: 900;
+    color: rgba(255,255,255,0.06);
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .edu-degree {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+  }
+
+  .edu-field {
+    font-size: 0.82rem;
+    color: rgba(245,240,232,0.7);
+    margin-bottom: 1rem;
+    font-style: italic;
+  }
+
+  .edu-uni {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    color: rgba(245,240,232,0.45);
+    text-transform: uppercase;
+  }
+
+  /* ---- RECOGNITION ---- */
+  .recognition-band {
+    background: var(--rust);
+    padding: 3rem 4rem;
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+  }
+
+  .rec-icon {
+    font-size: 2.5rem;
+    flex-shrink: 0;
+  }
+
+  .rec-content {}
+
+  .rec-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.7);
+    margin-bottom: 0.4rem;
+  }
+
+  .rec-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--paper);
+    font-weight: 400;
+    font-style: italic;
+  }
+
+  .cert-band {
+    background: var(--slate);
+    padding: 3rem 4rem;
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+  }
+
+  .cert-content {}
+
+  .cert-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.4rem;
+  }
+
+  .cert-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--paper);
+    font-weight: 400;
+  }
+
+  .cert-meta {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    color: rgba(245,240,232,0.5);
+    margin-top: 0.3rem;
+    letter-spacing: 0.05em;
+  }
+
+  /* ---- FOOTER ---- */
+  footer {
+    background: var(--ink);
+    color: rgba(245,240,232,0.4);
+    padding: 3rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+  }
+
+  footer a {
+    color: var(--gold);
+    text-decoration: none;
+  }
+
+  footer .footer-name {
+    color: var(--paper);
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: normal;
+  }
+
+  /* ---- DIVIDER ---- */
+  .divider {
+    height: 1px;
+    background: var(--line);
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* ---- ANIMATIONS ---- */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ---- RESPONSIVE ---- */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left { padding: 7rem 2rem 3rem; }
+    .hero-left::after { display: none; }
+    .hero-right { padding: 3rem 2rem; }
+    .hero-years { font-size: 6rem; top: 1rem; right: 1rem; }
+    .section { padding: 4rem 1.5rem; }
+    .exp-item { grid-template-columns: 1fr; gap: 1rem; }
+    .skills-outer { grid-template-columns: 1fr; }
+    .edu-grid { grid-template-columns: 1fr; }
+    .recognition-band, .cert-band { padding: 2rem 1.5rem; flex-direction: column; gap: 1.5rem; }
+    footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">R<span>.</span>N<span>.</span>N</a>
+  <ul class="nav-links">
+    <li><a href="#expertise">Expertise</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#education">Education</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Senior Technical Solutions Specialist</p>
+    <h1 class="hero-name">Rajiv<br>Niranjan<br><em>Nagpur</em></h1>
+    <p class="hero-title">20+ Years · Enterprise SaaS · Banking · Healthcare · Telecom</p>
+    <div class="hero-contacts">
+      <a href="tel:6474509691">(647) 450-9691</a>
+      <a href="mailto:rajivnagpur@gmail.com">rajivnagpur@gmail.com</a>
+      <a href="https://www.linkedin.com/in/RajivNagpur" target="_blank">linkedin.com/in/RajivNagpur</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-photo-wrap"><img class="hero-photo" src="data:image/jpeg;base64,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" alt="Rajiv Niranjan Nagpur"></div>
+    <div class="hero-years">20+</div>
+    <div class="hero-summary">
+      <p>Results-driven specialist with <strong>20+ years of experience</strong> supporting enterprise SaaS platforms, troubleshooting complex production issues, and delivering customer-focused technical solutions.</p>
+      <p>Proven expertise across <strong>Banking, Healthcare, Telecom, Manufacturing,</strong> and Digital Solutions — from triage through resolution, always keeping SLA compliance and customer satisfaction at the core.</p>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERTISE -->
+<section class="section" id="expertise">
+  <div class="section-header">
+    <span class="section-number">01</span>
+    <h2 class="section-title">Core Expertise</h2>
+  </div>
+  <div class="expertise-grid">
+    <div class="expertise-item"><div class="expertise-dot"></div><span class="expertise-text">Enterprise SaaS Application &amp; Production Support</span></div>
+    <div class="expertise-item"><div class="expertise-dot"></div><span class="expertise-text">Incident, Problem &amp; Root Cause Analysis</span></div>
+    <div class="expertise-item"><div class="expertise-dot"></div><span class="expertise-text">REST APIs, API Integrations &amp; Troubleshooting</span></div>
+    <div class="expertise-item"><div class="expertise-dot"></div><span class="expertise-text">JSON Processing &amp; Data Transformation</span></div>
+    <div class="expertise-item"><div class="expertise-dot"></div><span class="expertise-text">ServiceNow, Jira &amp; ITSM Operations</span></div>
+    <div class="expertise-item"><div class="expertise-dot"></div><span class="expertise-text">Linux / UNIX Systems &amp; Command-Line Support</span></div>
+    <div class="expertise-item"><div class="expertise-dot"></div><span class="expertise-text">SQL Server, Database Troubleshooting &amp; Reporting</span></div>
+    <div class="expertise-item"><div class="expertise-dot"></div><span class="expertise-text">Workflow Automation &amp; Operational Scaling</span></div>
+    <div class="expertise-item"><div class="expertise-dot"></div><span class="expertise-text">Customer Escalation &amp; Issue Resolution</span></div>
+    <div class="expertise-item"><div class="expertise-dot"></div><span class="expertise-text">Technical Documentation &amp; Knowledge Management</span></div>
+    <div class="expertise-item"><div class="expertise-dot"></div><span class="expertise-text">Cross-functional Collaboration with Engineering &amp; Product</span></div>
+    <div class="expertise-item"><div class="expertise-dot"></div><span class="expertise-text">Production Monitoring, Log Analysis &amp; Debugging</span></div>
+    <div class="expertise-item"><div class="expertise-dot"></div><span class="expertise-text">Postman, API Validation &amp; Integration Testing</span></div>
+    <div class="expertise-item"><div class="expertise-dot"></div><span class="expertise-text">Agile Support &amp; Release Readiness Activities</span></div>
+    <div class="expertise-item"><div class="expertise-dot"></div><span class="expertise-text">SharePoint, Microsoft 365 &amp; Enterprise Platforms</span></div>
+    <div class="expertise-item"><div class="expertise-dot"></div><span class="expertise-text">Networking, SSO/SAML &amp; Authentication Support</span></div>
+    <div class="expertise-item"><div class="expertise-dot"></div><span class="expertise-text">SaaS Deployment Support &amp; Production Stabilization</span></div>
+    <div class="expertise-item"><div class="expertise-dot"></div><span class="expertise-text">Customer Communication &amp; SLA Management</span></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- EXPERIENCE -->
+<section class="section" id="experience">
+  <div class="section-header">
+    <span class="section-number">02</span>
+    <h2 class="section-title">Professional Experience</h2>
+  </div>
+  <div class="experience-list">
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <p class="exp-company">Scotiabank</p>
+        <p class="exp-period">Feb 2021 – Nov 2025</p>
+        <p class="exp-type">Full-time</p>
+      </div>
+      <div class="exp-content">
+        <p class="exp-role">Sr. Technical Solution Specialist – eConsent &amp; Digitized Solutions (SME)</p>
+        <ul class="exp-bullets">
+          <li>Led enterprise production support and troubleshooting for eConsent and digitized workflow platforms supporting multiple business lines and customer onboarding operations.</li>
+          <li>Owned production incidents end-to-end: triage, root cause analysis, escalation coordination, and resolution tracking with full SLA compliance.</li>
+          <li>Supported REST API integrations, callback events, and workflow automation across enterprise SaaS environments.</li>
+          <li>Investigated production-impacting issues through log analysis, Postman API validations, and collaboration with development &amp; infrastructure teams.</li>
+          <li>Managed incidents and service requests in ServiceNow with timely customer-facing communications.</li>
+          <li>Collaborated with Engineering, Product, QA, and infrastructure teams to identify defects and coordinate corrective actions.</li>
+          <li>Transformed OSS account data from JSON files into actionable reporting datasets using Excel &amp; Power BI for operational insights and trend analysis.</li>
+          <li>Supported enterprise SaaS deployments, post-release validation, production stabilization, and workflow configuration across multiple environments.</li>
+          <li>Conducted recurring issue trend analysis and recommended operational improvements to reduce incidents.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <p class="exp-company">Rothmans, Benson &amp; Hedges</p>
+        <p class="exp-period">Apr 2020 – Feb 2021</p>
+        <p class="exp-type">Contract</p>
+      </div>
+      <div class="exp-content">
+        <p class="exp-role">IT Specialist – eCommerce Support</p>
+        <ul class="exp-bullets">
+          <li>Delivered application and operational support for enterprise eCommerce platforms supporting customers, retailers, and internal business teams.</li>
+          <li>Investigated transaction failures, operational bottlenecks, and production issues through log analysis, Jira tracking, and cross-functional troubleshooting.</li>
+          <li>Managed incidents and escalations via ServiceNow, maintaining SLA-driven response standards.</li>
+          <li>Generated operational reporting and analytics using Microsoft SQL Server, Salesforce, and Business Objects.</li>
+          <li>Authored troubleshooting documentation and knowledge resources in Confluence and ServiceNow.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <p class="exp-company">OneSpan Sign</p>
+        <p class="exp-period">Sep 2013 – Mar 2020</p>
+        <p class="exp-type">Full-time</p>
+      </div>
+      <div class="exp-content">
+        <p class="exp-role">OSS Product Support Specialist – Level 2</p>
+        <ul class="exp-bullets">
+          <li>Provided Level 2 enterprise SaaS application support for customer-facing integrations and global production environments.</li>
+          <li>Troubleshot REST API integrations, SSO/SAML authentication issues, account administration, and workflow incidents for enterprise customers.</li>
+          <li>Performed advanced issue replication, root cause analysis, escalation management, and resolution across distributed SaaS environments.</li>
+          <li>Collaborated with Product, QA, Engineering &amp; Customer Success to improve onboarding, deployment stability, and operational scalability.</li>
+          <li>Developed technical documentation, FAQs, and troubleshooting guides reducing recurring support incidents.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <p class="exp-company">American Managed Care / Universal Health Care</p>
+        <p class="exp-period">Dec 2009 – Aug 2013</p>
+        <p class="exp-type">Full-time</p>
+      </div>
+      <div class="exp-content">
+        <p class="exp-role">Sr. Technical Systems Analyst – Data Management (IT)</p>
+        <ul class="exp-bullets">
+          <li>Designed and supported enterprise reporting, analytics, and operational data workflows using Microsoft SQL Server technologies.</li>
+          <li>Collaborated with offshore development and engineering teams on database optimization, workflow automation, and operational improvement.</li>
+          <li>Supported secure data transmission workflows, compliance-focused operational processes, and production reporting systems.</li>
+          <li>Administered SharePoint environments, permissions, and enterprise documentation platforms.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <p class="exp-company">Barrett Xplore Inc.</p>
+        <p class="exp-period">Aug 2008 – Dec 2009</p>
+        <p class="exp-type">Full-time</p>
+      </div>
+      <div class="exp-content">
+        <p class="exp-role">Technical Support Associate – Level 2</p>
+        <ul class="exp-bullets">
+          <li>Delivered Level 2 support for Fixed Wireless, HughesNet, Telesat, VoIP, and enterprise Internet services.</li>
+          <li>Troubleshot network connectivity, LAN/WAN, routing, and browser issues across Windows and Mac systems.</li>
+          <li>Monitored and diagnosed network traffic using Telnet, Cacti, and infrastructure monitoring tools.</li>
+          <li>Developed SQL queries and stored procedures for operational analysis using MS SQL Server.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <p class="exp-company">CapGemini</p>
+        <p class="exp-period">Jul 2005 – Sep 2007</p>
+        <p class="exp-type">Full-time</p>
+      </div>
+      <div class="exp-content">
+        <p class="exp-role">Software Associate – Production Support</p>
+        <ul class="exp-bullets">
+          <li>Delivered enterprise production support for CRM and sales applications supporting global business operations.</li>
+          <li>Executed defect testing, UAT validation, and release readiness activities for enterprise applications.</li>
+          <li>Developed SQL queries and operational reports supporting troubleshooting and production analysis.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <p class="exp-company">Accenture</p>
+        <p class="exp-period">Aug 2001 – Jul 2005</p>
+        <p class="exp-type">Full-time</p>
+      </div>
+      <div class="exp-content">
+        <p class="exp-role">Senior Technical Support Associate – Level 2</p>
+        <ul class="exp-bullets">
+          <li>Provided technical and application support to enterprise users through phone and email channels.</li>
+          <li>Managed incident tracking, escalations, and customer communications using enterprise support tools.</li>
+          <li>Authored support documentation and SharePoint-based knowledge resources for team collaboration.</li>
+          <li>Executed SQL queries and generated operational reports to support troubleshooting and business analysis.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SKILLS -->
+<section class="section" id="skills">
+  <div class="section-header">
+    <span class="section-number">03</span>
+    <h2 class="section-title">Technical Skills</h2>
+  </div>
+  <div class="skills-outer">
+    <div class="skill-group">
+      <p class="skill-group-title">Application Support &amp; Operations</p>
+      <div class="skill-tags">
+        <span class="skill-tag">ServiceNow</span>
+        <span class="skill-tag">Jira</span>
+        <span class="skill-tag">Confluence</span>
+        <span class="skill-tag">Incident Management</span>
+        <span class="skill-tag">Problem Management</span>
+        <span class="skill-tag">Root Cause Analysis</span>
+        <span class="skill-tag">SLA Management</span>
+        <span class="skill-tag">Customer Escalation</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <p class="skill-group-title">APIs, Automation &amp; Integration</p>
+      <div class="skill-tags">
+        <span class="skill-tag">REST APIs</span>
+        <span class="skill-tag">JSON Processing</span>
+        <span class="skill-tag">Postman</span>
+        <span class="skill-tag">Workflow Automation</span>
+        <span class="skill-tag">API Validation</span>
+        <span class="skill-tag">HTML / JavaScript</span>
+        <span class="skill-tag">Java</span>
+        <span class="skill-tag">.NET SDKs</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <p class="skill-group-title">Databases &amp; Reporting</p>
+      <div class="skill-tags">
+        <span class="skill-tag">Microsoft SQL Server</span>
+        <span class="skill-tag">SQL Queries</span>
+        <span class="skill-tag">SSRS</span>
+        <span class="skill-tag">SSIS</span>
+        <span class="skill-tag">SSAS</span>
+        <span class="skill-tag">Power BI</span>
+        <span class="skill-tag">Crystal Reports</span>
+        <span class="skill-tag">Business Objects</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <p class="skill-group-title">Platforms &amp; Infrastructure</p>
+      <div class="skill-tags">
+        <span class="skill-tag">Linux / UNIX</span>
+        <span class="skill-tag">Windows</span>
+        <span class="skill-tag">Microsoft 365</span>
+        <span class="skill-tag">SharePoint Online</span>
+        <span class="skill-tag">Active Directory</span>
+        <span class="skill-tag">Salesforce</span>
+        <span class="skill-tag">SSO / SAML</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- EDUCATION -->
+<section class="section" id="education">
+  <div class="section-header">
+    <span class="section-number">04</span>
+    <h2 class="section-title">Education</h2>
+  </div>
+  <div class="edu-grid">
+    <div class="edu-card" data-abbr="M.Eng">
+      <p class="edu-degree">Master of Engineering (M.Eng.)</p>
+      <p class="edu-field">Computer Networks &amp; Technology Management</p>
+      <p class="edu-uni">Dalhousie University</p>
+    </div>
+    <div class="edu-card" data-abbr="M.Sc">
+      <p class="edu-degree">Master of Science (M.Sc.)</p>
+      <p class="edu-field">Software &amp; Information Systems</p>
+      <p class="edu-uni">Bharathiar University</p>
+    </div>
+    <div class="edu-card" data-abbr="B.Sc">
+      <p class="edu-degree">Bachelor of Science (B.Sc.)</p>
+      <p class="edu-field">Computer Science</p>
+      <p class="edu-uni">Bangalore University</p>
+    </div>
+  </div>
+</section>
+
+<!-- RECOGNITION & CERTIFICATION -->
+<div class="recognition-band">
+  <div class="rec-icon">🏏</div>
+  <div class="rec-content">
+    <p class="rec-label">Award of Recognition</p>
+    <p class="rec-text">Member of YMCA Cricket Team India — International Tour of Sri Lanka, 1999</p>
+  </div>
+</div>
+
+<div class="cert-band">
+  <div class="rec-icon">📜</div>
+  <div class="cert-content">
+    <p class="cert-label">Certification</p>
+    <p class="cert-text">Mortgage Agent – Level 1</p>
+    <p class="cert-meta">Certificate No: V0ZoNlRHMVpN &nbsp;·&nbsp; Completed: December 11, 2025</p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-name">Rajiv Niranjan Nagpur</span>
+  <span>Senior Technical Solutions Specialist</span>
+  <span>
+    <a href="mailto:rajivnagpur@gmail.com">rajivnagpur@gmail.com</a>
+    &nbsp;·&nbsp;
+    <a href="https://www.linkedin.com/in/RajivNagpur" target="_blank">LinkedIn</a>
+  </span>
+</footer>
+
+<script>
+  // Scroll-reveal for experience items
+  const items = document.querySelectorAll('.exp-item');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  items.forEach(item => observer.observe(item));
+</script>
+</body>
+</html>
