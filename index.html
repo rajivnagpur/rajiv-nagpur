@@ -642,11 +642,10 @@
   .mobile-menu a:last-child { border-bottom: none; }
   .mobile-menu a:hover { color: var(--rust); background: var(--cream); }
 
-  @media (max-width: 480px) {
-    .hamburger { display: flex; }
-  }
+  /* ---- TABLET (max 900px) ---- */
   @media (max-width: 900px) {
     nav { padding: 1rem 1.5rem; }
+    .hamburger { display: flex; }
     .nav-links { display: none; }
     .hero { grid-template-columns: 1fr; min-height: auto; }
     .hero-left { padding: 7rem 2rem 3rem; }
