@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rajiv Niranjan Nagpur — Senior Application Support & Technical Solution Specialist</title>
+<title>Rajiv Niranjan Nagpur — Senior Application Support &amp; Technical Solution Specialist</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -35,6 +35,7 @@
     z-index: 1000;
     opacity: 0.6;
   }
+  /* NAV */
   nav {
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -56,11 +57,7 @@
     text-decoration: none;
   }
   .nav-logo span { color: var(--rust); }
-  .nav-links {
-    display: flex;
-    gap: 2.5rem;
-    list-style: none;
-  }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
   .nav-links a {
     font-family: "DM Mono", monospace;
     font-size: 0.72rem;
@@ -71,6 +68,7 @@
     transition: color 0.2s;
   }
   .nav-links a:hover { color: var(--rust); }
+  /* HAMBURGER */
   .hamburger {
     display: none;
     flex-direction: column;
@@ -81,12 +79,8 @@
     border: none;
   }
   .hamburger span {
-    display: block;
-    width: 22px;
-    height: 2px;
-    background: var(--ink);
-    border-radius: 2px;
-    transition: all 0.3s;
+    display: block; width: 22px; height: 2px;
+    background: var(--ink); border-radius: 2px; transition: all 0.3s;
   }
   .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
   .hamburger.open span:nth-child(2) { opacity: 0; }
@@ -103,18 +97,15 @@
   }
   .mobile-menu.open { display: block; }
   .mobile-menu a {
-    display: block;
-    padding: 0.8rem 1.5rem;
-    font-family: "DM Mono", monospace;
-    font-size: 0.78rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--ink);
-    text-decoration: none;
+    display: block; padding: 0.8rem 1.5rem;
+    font-family: "DM Mono", monospace; font-size: 0.78rem;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--ink); text-decoration: none;
     border-bottom: 1px solid var(--line);
   }
   .mobile-menu a:last-child { border-bottom: none; }
   .mobile-menu a:hover { color: var(--rust); background: var(--cream); }
+  /* HERO */
   .hero {
     min-height: 100vh;
     display: grid;
@@ -134,80 +125,54 @@
     content: "";
     position: absolute;
     top: 0; right: -1px;
-    width: 60px;
-    height: 100%;
+    width: 60px; height: 100%;
     background: var(--paper);
     clip-path: polygon(100% 0, 100% 100%, 0 100%);
   }
   .hero-eyebrow {
     font-family: "DM Mono", monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--gold);
+    font-size: 0.7rem; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--gold);
     margin-bottom: 1.5rem;
-    opacity: 0;
-    animation: fadeUp 0.8s 0.2s forwards;
+    opacity: 0; animation: fadeUp 0.8s 0.2s forwards;
   }
   .hero-name {
     font-family: "Playfair Display", serif;
     font-weight: 900;
     font-size: clamp(2.8rem, 5vw, 4.5rem);
-    line-height: 1.05;
-    color: var(--paper);
+    line-height: 1.05; color: var(--paper);
     margin-bottom: 0.4rem;
-    opacity: 0;
-    animation: fadeUp 0.8s 0.4s forwards;
+    opacity: 0; animation: fadeUp 0.8s 0.4s forwards;
   }
   .hero-name em { color: var(--rust); font-style: normal; }
   .hero-title {
     font-family: "DM Sans", sans-serif;
-    font-weight: 300;
-    font-size: 1rem;
+    font-weight: 300; font-size: 1rem;
     color: rgba(245,240,232,0.55);
-    margin-bottom: 2.5rem;
-    letter-spacing: 0.04em;
-    opacity: 0;
-    animation: fadeUp 0.8s 0.6s forwards;
+    margin-bottom: 2.5rem; letter-spacing: 0.04em;
+    opacity: 0; animation: fadeUp 0.8s 0.6s forwards;
   }
   .hero-contacts {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    opacity: 0;
-    animation: fadeUp 0.8s 0.8s forwards;
+    display: flex; flex-direction: column; gap: 0.5rem;
+    opacity: 0; animation: fadeUp 0.8s 0.8s forwards;
   }
   .hero-contacts a {
-    font-family: "DM Mono", monospace;
-    font-size: 0.78rem;
-    color: rgba(245,240,232,0.6);
-    text-decoration: none;
-    transition: color 0.2s;
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
+    font-family: "DM Mono", monospace; font-size: 0.78rem;
+    color: rgba(245,240,232,0.6); text-decoration: none;
+    transition: color 0.2s; display: flex; align-items: center; gap: 0.6rem;
   }
   .hero-contacts a:hover { color: var(--gold); }
   .hero-contacts a::before { content: "→"; color: var(--rust); font-size: 0.9rem; }
   .hero-right {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 8rem 5rem 5rem 7rem;
-    position: relative;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 8rem 5rem 5rem 7rem; position: relative;
   }
   .hero-photo-wrap {
-    position: absolute;
-    top: 5rem;
-    right: 4rem;
-    z-index: 2;
+    position: absolute; top: 5rem; right: 4rem; z-index: 2;
   }
   .hero-photo {
-    width: 130px;
-    height: 130px;
-    border-radius: 50%;
-    object-fit: cover;
-    object-position: center top;
+    width: 130px; height: 130px; border-radius: 50%;
+    object-fit: cover; object-position: center top;
     border: 4px solid var(--paper);
     box-shadow: 0 8px 32px rgba(13,13,13,0.25), 0 0 0 1px var(--gold);
     display: block;
@@ -215,258 +180,163 @@
   .hero-years {
     font-family: "Playfair Display", serif;
     font-size: clamp(6rem, 12vw, 10rem);
-    font-weight: 900;
-    line-height: 1;
+    font-weight: 900; line-height: 1;
     color: var(--cream);
-    position: absolute;
-    top: 5rem;
-    right: 3rem;
-    z-index: 0;
-    user-select: none;
+    position: absolute; top: 5rem; right: 3rem;
+    z-index: 0; user-select: none;
   }
   .hero-summary {
-    position: relative;
-    z-index: 1;
-    font-size: 1.05rem;
-    line-height: 1.8;
-    color: var(--slate);
-    max-width: 480px;
-    opacity: 0;
-    animation: fadeUp 0.8s 1s forwards;
+    position: relative; z-index: 1;
+    font-size: 1.05rem; line-height: 1.8;
+    color: var(--slate); max-width: 480px;
+    opacity: 0; animation: fadeUp 0.8s 1s forwards;
   }
   .hero-summary p { margin-bottom: 1.2rem; }
   .hero-summary strong { color: var(--ink); font-weight: 500; }
-  .section {
-    padding: 7rem 4rem;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
+  /* SECTIONS */
+  .section { padding: 7rem 4rem; max-width: 1200px; margin: 0 auto; }
   .section-header {
-    display: flex;
-    align-items: baseline;
-    gap: 1.5rem;
+    display: flex; align-items: baseline; gap: 1.5rem;
     margin-bottom: 4rem;
-    border-bottom: 1px solid var(--line);
-    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--line); padding-bottom: 1.5rem;
   }
   .section-number {
-    font-family: "DM Mono", monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.15em;
-    color: var(--rust);
-    text-transform: uppercase;
+    font-family: "DM Mono", monospace; font-size: 0.7rem;
+    letter-spacing: 0.15em; color: var(--rust); text-transform: uppercase;
   }
   .section-title {
     font-family: "Playfair Display", serif;
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--ink);
+    font-size: 2rem; font-weight: 700; color: var(--ink);
   }
+  /* EXPERTISE */
   .expertise-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 1px;
-    background: var(--line);
-    border: 1px solid var(--line);
+    gap: 1px; background: var(--line); border: 1px solid var(--line);
   }
   .expertise-item {
-    background: var(--paper);
-    padding: 1.5rem;
-    display: flex;
-    align-items: flex-start;
-    gap: 0.8rem;
+    background: var(--paper); padding: 1.5rem;
+    display: flex; align-items: flex-start; gap: 0.8rem;
     transition: background 0.2s;
   }
   .expertise-item:hover { background: var(--cream); }
   .expertise-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--rust);
-    margin-top: 0.55rem;
-    flex-shrink: 0;
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--rust); margin-top: 0.55rem; flex-shrink: 0;
   }
   .expertise-text { font-size: 0.88rem; color: var(--slate); line-height: 1.5; }
-  .experience-list { display: flex; flex-direction: column; gap: 0; }
+  /* EXPERIENCE */
+  .experience-list { display: flex; flex-direction: column; }
   .exp-item {
-    display: grid;
-    grid-template-columns: 200px 1fr;
-    gap: 3rem;
-    padding: 3rem 0;
+    display: grid; grid-template-columns: 200px 1fr;
+    gap: 3rem; padding: 3rem 0;
     border-bottom: 1px solid var(--line);
-    opacity: 0;
-    transform: translateY(20px);
+    opacity: 0; transform: translateY(20px);
     transition: opacity 0.6s, transform 0.6s;
   }
   .exp-item.visible { opacity: 1; transform: translateY(0); }
   .exp-meta { padding-top: 0.3rem; }
   .exp-company {
     font-family: "Playfair Display", serif;
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--ink);
-    margin-bottom: 0.3rem;
+    font-size: 1rem; font-weight: 700; color: var(--ink); margin-bottom: 0.3rem;
   }
   .exp-period {
     font-family: "DM Mono", monospace;
-    font-size: 0.68rem;
-    letter-spacing: 0.08em;
-    color: var(--rust);
-    margin-bottom: 0.5rem;
+    font-size: 0.68rem; letter-spacing: 0.08em; color: var(--rust); margin-bottom: 0.5rem;
   }
   .exp-type { font-size: 0.75rem; color: var(--muted); font-style: italic; }
   .exp-role {
     font-family: "Playfair Display", serif;
-    font-size: 1.3rem;
-    font-weight: 700;
-    color: var(--ink);
-    margin-bottom: 1.2rem;
+    font-size: 1.3rem; font-weight: 700; color: var(--ink); margin-bottom: 1.2rem;
   }
   .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
   .exp-bullets li {
-    font-size: 0.9rem;
-    color: var(--slate);
-    padding-left: 1.2rem;
-    position: relative;
-    line-height: 1.6;
+    font-size: 0.9rem; color: var(--slate);
+    padding-left: 1.2rem; position: relative; line-height: 1.6;
   }
   .exp-bullets li::before {
-    content: "—";
-    position: absolute;
-    left: 0;
-    color: var(--gold);
-    font-size: 0.8rem;
+    content: "—"; position: absolute; left: 0;
+    color: var(--gold); font-size: 0.8rem;
   }
-  .skills-outer {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 3rem;
-  }
+  /* SKILLS */
+  .skills-outer { display: grid; grid-template-columns: repeat(2, 1fr); gap: 3rem; }
   .skill-group {
-    padding: 2rem;
-    border: 1px solid var(--line);
-    position: relative;
+    padding: 2rem; border: 1px solid var(--line); position: relative;
   }
   .skill-group::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0;
-    width: 3px;
-    height: 100%;
-    background: var(--rust);
+    content: ""; position: absolute; top: 0; left: 0;
+    width: 3px; height: 100%; background: var(--rust);
   }
   .skill-group-title {
-    font-family: "DM Mono", monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--rust);
-    margin-bottom: 1.2rem;
+    font-family: "DM Mono", monospace; font-size: 0.7rem;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--rust); margin-bottom: 1.2rem;
   }
   .skill-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
   .skill-tag {
-    font-family: "DM Mono", monospace;
-    font-size: 0.72rem;
-    padding: 0.3rem 0.8rem;
-    background: var(--cream);
-    color: var(--slate);
-    border: 1px solid var(--line);
-    letter-spacing: 0.04em;
-    transition: all 0.2s;
+    font-family: "DM Mono", monospace; font-size: 0.72rem;
+    padding: 0.3rem 0.8rem; background: var(--cream);
+    color: var(--slate); border: 1px solid var(--line);
+    letter-spacing: 0.04em; transition: all 0.2s;
   }
   .skill-tag:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); }
-  .edu-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-  }
+  /* EDUCATION */
+  .edu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
   .edu-card {
-    padding: 2rem;
-    background: var(--ink);
-    color: var(--paper);
-    position: relative;
-    overflow: hidden;
+    padding: 2rem; background: var(--ink); color: var(--paper);
+    position: relative; overflow: hidden;
   }
   .edu-card::after {
     content: attr(data-abbr);
-    position: absolute;
-    bottom: -1rem;
-    right: -0.5rem;
+    position: absolute; bottom: -1rem; right: -0.5rem;
     font-family: "Playfair Display", serif;
-    font-size: 5rem;
-    font-weight: 900;
-    color: rgba(255,255,255,0.06);
-    line-height: 1;
-    pointer-events: none;
+    font-size: 5rem; font-weight: 900;
+    color: rgba(255,255,255,0.06); line-height: 1; pointer-events: none;
   }
   .edu-degree {
     font-family: "Playfair Display", serif;
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--gold);
-    margin-bottom: 0.5rem;
-    line-height: 1.3;
+    font-size: 1rem; font-weight: 700; color: var(--gold);
+    margin-bottom: 0.5rem; line-height: 1.3;
   }
   .edu-field { font-size: 0.82rem; color: rgba(245,240,232,0.7); margin-bottom: 1rem; font-style: italic; }
   .edu-uni { font-family: "DM Mono", monospace; font-size: 0.7rem; letter-spacing: 0.1em; color: rgba(245,240,232,0.45); text-transform: uppercase; }
+  /* BANDS */
   .recognition-band {
-    background: var(--rust);
-    padding: 3rem 4rem;
-    display: flex;
-    align-items: center;
-    gap: 3rem;
+    background: var(--rust); padding: 3rem 4rem;
+    display: flex; align-items: center; gap: 3rem;
   }
   .rec-icon { font-size: 2.5rem; flex-shrink: 0; }
   .rec-label {
-    font-family: "DM Mono", monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: rgba(245,240,232,0.7);
-    margin-bottom: 0.4rem;
+    font-family: "DM Mono", monospace; font-size: 0.7rem;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: rgba(245,240,232,0.7); margin-bottom: 0.4rem;
   }
   .rec-text {
     font-family: "Playfair Display", serif;
-    font-size: 1.1rem;
-    color: var(--paper);
-    font-weight: 400;
-    font-style: italic;
+    font-size: 1.1rem; color: var(--paper); font-weight: 400; font-style: italic;
   }
   .cert-band {
-    background: var(--slate);
-    padding: 3rem 4rem;
-    display: flex;
-    align-items: flex-start;
-    gap: 3rem;
+    background: var(--slate); padding: 3rem 4rem;
+    display: flex; align-items: flex-start; gap: 3rem;
   }
   .cert-label {
-    font-family: "DM Mono", monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 0.8rem;
+    font-family: "DM Mono", monospace; font-size: 0.7rem;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 0.8rem;
   }
   .cert-item { margin-bottom: 1.2rem; }
   .cert-item:last-child { margin-bottom: 0; }
   .cert-text {
     font-family: "Playfair Display", serif;
-    font-size: 1rem;
-    color: var(--paper);
-    font-weight: 400;
+    font-size: 1rem; color: var(--paper); font-weight: 400;
   }
   .cert-meta { font-family: "DM Mono", monospace; font-size: 0.68rem; color: rgba(245,240,232,0.5); margin-top: 0.3rem; letter-spacing: 0.05em; }
   .divider { height: 1px; background: var(--line); max-width: 1200px; margin: 0 auto; }
   footer {
-    background: var(--ink);
-    color: rgba(245,240,232,0.4);
+    background: var(--ink); color: rgba(245,240,232,0.4);
     padding: 3rem 4rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-family: "DM Mono", monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.1em;
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: "DM Mono", monospace; font-size: 0.7rem; letter-spacing: 0.1em;
   }
   footer a { color: var(--gold); text-decoration: none; }
   footer .footer-name { color: var(--paper); font-family: "Playfair Display", serif; font-size: 1rem; font-weight: 700; letter-spacing: normal; }
@@ -474,7 +344,7 @@
     from { opacity: 0; transform: translateY(24px); }
     to   { opacity: 1; transform: translateY(0); }
   }
-  /* ---- TABLET ---- */
+  /* TABLET */
   @media (max-width: 900px) {
     nav { padding: 1rem 1.5rem; }
     .hamburger { display: flex; }
@@ -493,7 +363,7 @@
     .recognition-band, .cert-band { padding: 2rem 1.5rem; flex-direction: column; gap: 1.5rem; }
     footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem 1.5rem; }
   }
-  /* ---- MOBILE ---- */
+  /* MOBILE */
   @media (max-width: 480px) {
     nav { padding: 0.9rem 1rem; }
     .nav-logo { font-size: 1rem; }
@@ -606,6 +476,7 @@
     <div class="expertise-item"><div class="expertise-dot"></div><span class="expertise-text">SaaS Deployment Support &amp; Production Stabilization</span></div>
     <div class="expertise-item"><div class="expertise-dot"></div><span class="expertise-text">Networking, SSO/SAML &amp; Authentication Support</span></div>
     <div class="expertise-item"><div class="expertise-dot"></div><span class="expertise-text">Customer Communication &amp; SLA Management</span></div>
+    <div class="expertise-item"><div class="expertise-dot"></div><span class="expertise-text">AI &amp; Productivity Tools (Microsoft Copilot, ChatGPT, Claude, GitHub Copilot, Google Gemini, Perplexity AI)</span></div>
   </div>
 </section>
 
@@ -677,12 +548,16 @@
           <li>Troubleshot REST API integrations, SSO/SAML authentication issues, workflow incidents, account administration problems, and distributed SaaS environment issues for enterprise customers.</li>
           <li>Supported integrations and troubleshooting for OneSpan Sign connectors with Salesforce, Microsoft SharePoint, Dynamics CRM, Azure, Box, and OSS Print Driver solutions.</li>
           <li>Acted as liaison between enterprise customers, Product Engineering, QA, R&amp;D, and Customer Success teams to ensure timely resolution of product defects and technical issues.</li>
+          <li>Provided remote technical assistance for software installation, configuration, deployment, and troubleshooting across Sandbox and Production environments.</li>
+          <li>Supported implementation and configuration of OneSpan Sign Desktop 7.5.x, OSS Print Driver, Salesforce connector, SharePoint connector, and Microsoft Dynamics CRM connector solutions.</li>
           <li>Created and managed Salesforce user profiles, monitored access permissions, imported leads and contacts, applied Salesforce updates, and supported environment configuration for implementation and testing.</li>
           <li>Configured, scheduled, and generated Salesforce case management reports supporting operational monitoring and customer support activities.</li>
           <li>Uploaded, packaged, and distributed deployment solutions using Salesforce Packaging tools.</li>
           <li>Performed advanced issue replication, root cause analysis, escalation management, and customer issue resolution across distributed SaaS environments.</li>
           <li>Participated in functional testing, regression testing, UAT validation, release readiness, deployment support, and post-deployment stabilization activities.</li>
+          <li>Assisted customers with API troubleshooting, workflow optimization, SaaS account setup, and operational issue resolution.</li>
           <li>Developed technical documentation, FAQs, troubleshooting guides, and knowledge base resources improving operational efficiency &amp; reducing recurring incidents.</li>
+          <li>Maintained high-quality customer communication through issue updates, escalation coordination, and resolution follow-through.</li>
         </ul>
       </div>
     </div>
@@ -819,6 +694,17 @@
         <span class="skill-tag">SharePoint Online</span>
         <span class="skill-tag">Active Directory</span>
         <span class="skill-tag">Salesforce Administration &amp; Configuration</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <p class="skill-group-title">AI &amp; Productivity Tools</p>
+      <div class="skill-tags">
+        <span class="skill-tag">Microsoft Copilot</span>
+        <span class="skill-tag">ChatGPT</span>
+        <span class="skill-tag">Claude (Anthropic)</span>
+        <span class="skill-tag">GitHub Copilot</span>
+        <span class="skill-tag">Google Gemini</span>
+        <span class="skill-tag">Perplexity AI</span>
       </div>
     </div>
   </div>
